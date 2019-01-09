@@ -4,7 +4,42 @@
 ! Conjugate Gradient algorithm for system of linear equations AX = b
 ! Reference: https://en.wikipedia.org/wiki/Conjugate_gradient_method
 
+! main programme to execute subroutine
+program main
+    ! main program for execution
+    implicit none
+    integer, parameter :: n = 10
+    real, dimension(n,n):: A
+    real, dimension(100,n) :: M
+    real, dimension(n,1) :: b
+    real, dimension(n,1) :: X
+    real, dimension(n,1) :: Z
+    integer :: i
+   
+    
+    call random_number(M) ! randomly fill matrix A    
+    A = matmul(transpose(M),M)
+    
+    call random_number(Z)
+    b = matmul(A,Z) !compute b
+    
+    print *, "Matrix A is "
+    print "(10f5.1)", (A(i,:),i=1,n)
+    print*
+    print*, "The vector b is"
+    print "(1f5.1)", b(:,1)
+    print*
+    print*, "The true unknown vector to be solved for is Z = "
+    print "(1f5.3)", Z(:,1)
+    print*
+    call conjgrad(A,b,X,n)
+    
+    print*, "The solution is X="
+    print "(1f5.3)", X(:,1)
+    
+contains
 
+! subroutine conjgrad()
 subroutine conjgrad(A,b,X,n)
 ! solve the system AX=b
     implicit none
@@ -55,40 +90,8 @@ subroutine conjgrad(A,b,X,n)
     dpr0 = dpr1 
     
     end do ! end (while) do loop
+    print*, "Number of iterations = ",k
 end subroutine conjgrad
 
-
-! main programme to execute subroutine
-program main
-    ! main program for execution
-    implicit none
-    integer, parameter :: n = 10
-    real, dimension(n,n):: A
-    real, dimension(100,n) :: M
-    real, dimension(n,1) :: b
-    real, dimension(n,1) :: X
-    real, dimension(n,1) :: Z
-    integer :: i
-   
-    
-    call random_number(M) ! randomly fill matrix A    
-    A = matmul(transpose(M),M)
-    
-    call random_number(Z)
-    b = matmul(A,Z) !compute b
-    
-    print *, "Matrix A is "
-    print "(10f5.1)", (A(i,:),i=1,n)
-    print*
-    print*, "The vector b is"
-    print "(1f5.1)", b(:,1)
-    print*
-    print*, "The true unknown vector to be solved for is Z = "
-    print "(1f5.3)", Z(:,1)
-    print*
-    call conjgrad(A,b,X,n)
-    
-    print*, "The solution is X="
-    print "(1f5.3)", X(:,1)
     
 end program main
