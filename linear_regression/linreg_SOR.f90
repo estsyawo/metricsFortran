@@ -1,7 +1,7 @@
 ! Emmanuel S. Tsyawo 
 ! estsyawo@temple.edu,  estsyawo@gmail.com
 ! January 28, 2019
-! Successive over-relaxation (SOR) algorithm for system of linear equations AX = b
+! Linear regression based on the SOR algorithm
 ! Reference: https://en.wikipedia.org/wiki/Successive_over-relaxation
 
 ! main programme to execute subroutine
