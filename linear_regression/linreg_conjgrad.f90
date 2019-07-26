@@ -13,7 +13,7 @@ program main
     real, dimension(n,k) :: X
     real, dimension(n,1) :: Y,e
     real, dimension(k,1) :: Z,beta !true parameter values to be solved for
-    integer :: i
+    
    
     
     call random_number(X) ! randomly fill matrix X    
@@ -46,7 +46,7 @@ subroutine conjgrad(A,b,X,n)
     real, dimension(n,1), intent(out) :: X
     real, dimension(n,1) :: r, p, vec
     real :: dev, alf, beta, tol, dpr1, dpr0
-    integer :: i, k, maxiter
+    integer :: k, maxiter
 
 ! initialise elements of X and parameters
     X(1:n,1) = 0.0
