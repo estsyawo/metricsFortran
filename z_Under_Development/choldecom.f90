@@ -2,6 +2,7 @@
 ! estsyawo@temple.edu,  estsyawo@gmail.com
 ! May 1, 2019
 ! Cholesky decomposition of a symmetric positive definite matrix
+! Reference: https://en.wikipedia.org/wiki/Cholesky_decomposition
 
 
 
